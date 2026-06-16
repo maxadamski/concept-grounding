@@ -1,0 +1,105 @@
+\begin{tikzpicture}[
+    font=\sffamily\small,
+    cell/.style={rectangle, draw, minimum size=5mm, inner sep=0pt},
+    smallcell/.style={rectangle, draw, minimum size=3mm, inner sep=0pt},
+    block/.style={rectangle, draw=black, fill=white, thick, minimum width=1.5cm, inner sep=0pt},
+    column/.style={rectangle, draw, minimum size=8mm, inner sep=0pt},
+    v_dots/.style={
+        column,
+        path picture={
+            \foreach \i in {-0.15, 0, 0.15}
+                \fill (path picture bounding box.center) +(0,\i) circle (0.8pt);
+        }
+    },
+    h_dots/.style={
+        cell,
+        path picture={
+            \foreach \i in {-0.12, 0, 0.12}
+                \fill (path picture bounding box.center) +(\i,0) circle (0.8pt);
+        }
+    }
+]
+
+    % --- 1. Input Element Grid ---
+    \begin{scope}[shift={(0,0)}]
+        \foreach \x in {0,...,5}
+            \foreach \y in {0,...,4}
+                \node[cell] (e\x\y) at (\x*0.5, -\y*0.5) {};
+        
+        \node at (e00) {$e_1$};
+        \node at (e10) {$e_2$};
+        \node at (e20) {$e_3$};
+        \node[h_dots] at (e30) {};
+        \node[cell, fill=white, scale=1.1, thick] (ei_box) at (e32) {$e_i$};
+        \node at (e54) {$e_N$};
+    \end{scope}
+
+    % --- 2. Vector X ---
+    \begin{scope}[shift={(3.9, -1.0)}] 
+        \node[column] (x1) at (0, 1.6) {$x_1$};
+        \node[column] (x2) at (0, 0.8) {$x_2$};
+        \node[column] (x3) at (0, 0) {$x_3$};
+        \node[v_dots] (xdots) at (0, -0.8) {};
+        \node[column] (xc) at (0, -1.6) {$x_C$};
+    \end{scope}
+
+    % --- 3. Encoder Block ---
+    \node[block, minimum height=4cm] (encoder) at (5.7, -1.0) {Encoder};
+
+    % --- 4. Latent Representation H ---
+    \begin{scope}[shift={(7.5, -1.0)}]
+        \node[column] (h1) at (0, 0.8) {$z_1$};
+        \node[v_dots] (hdots) at (0, 0) {};
+        \node[column] (he) at (0, -0.8) {$z_E$};
+    \end{scope}
+
+    % --- 5. Smaller Output Grid ---
+    \begin{scope}[shift={(6.6, -3.8)}]
+        \foreach \x in {0,...,5}
+            \foreach \y in {0,...,4}
+                \node[smallcell] (em\x\y) at (\x*0.3, -\y*0.3) {};
+        
+        \node[rectangle, draw=black, fill=white, thick, minimum size=4.5mm, inner sep=0pt] (eip) at (em32) {$e_i'$};
+    \end{scope}
+
+    % --- 7. Decoder Block ---
+    \node[block, minimum height=4cm] (decoder) at (9.3, -1.0) {Decoder};
+
+    % --- 8. Output Vectors ---
+    \begin{scope}[shift={(11.1, -1.0)}]
+        \node[column] (yh1) at (0, 1.6) {$\hat{y}_1$};
+        \node[column] (yh2) at (0, 0.8) {$\hat{y}_2$};
+        \node[column] (yh3) at (0, 0) {$\hat{y}_3$};
+        \node[v_dots] (yhdots) at (0, -0.8) {};
+        \node[column] (yhd) at (0, -1.6) {$\hat{y}_D$};
+    \end{scope}
+
+    \begin{scope}[shift={(12.4, -1.0)}]
+        \node[column] (y1) at (0, 1.6) {$y_1$};
+        \node[column] (y2) at (0, 0.8) {$y_2$};
+        \node[column] (y3) at (0, 0) {$y_3$};
+        \node[v_dots] (ydots) at (0, -0.8) {};
+        \node[column] (yd) at (0, -1.6) {$y_D$};
+    \end{scope}
+
+    % --- 9. Connections ---
+    \draw[dashed, gray] (ei_box.north east) to [out=0, in=180] (x1.north west);
+    \draw[dashed, gray] (ei_box.south east) to [out=0, in=180] (xc.south west);
+    \draw[dashed, gray] (x1.north east) -- (encoder.north west);
+    \draw[dashed, gray] (xc.south east) -- (encoder.south west);
+    \draw[dashed, gray] (encoder.north east) -- (h1.north west);
+    \draw[dashed, gray] (encoder.south east) -- (he.south west);
+    \draw[dashed, gray] (h1.north east) -- (decoder.north west);
+    \draw[dashed, gray] (he.south east) -- (decoder.south west);
+    \draw[dashed, gray] (decoder.north east) -- (yh1.north west);
+    \draw[dashed, gray] (decoder.south east) -- (yhd.south west);
+    \draw[dashed, gray] (he.south west) -- (eip.north west);
+    \draw[dashed, gray] (he.south east) -- (eip.north east);
+
+    % --- 10. Overhead "Through" Path ---
+    \draw[thick, ->, >=stealth, rounded corners=6pt] 
+        (x1.north) -- (3.9, 2.1) -- (12.4, 2.1) -- (y1.north);
+
+    \node[draw=black, rounded corners=10pt, inner sep=5pt, thick, fill=white] at (7.5, 2.1) {Propositions};
+
+\end{tikzpicture}

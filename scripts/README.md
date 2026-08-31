@@ -42,3 +42,9 @@ The order for Table 2 is:
 ```
 --variables="P(collect_wood),P(make_wood_sword),P(make_wood_pickaxe),P(place_stone),P(place_table),P(place_furnace),P(collect_stone),P(make_stone_sword),P(make_stone_pickaxe),P(collect_coal),P(make_torch),P(place_torch),P(collect_iron),P(make_iron_sword),P(make_iron_pickaxe),P(make_iron_armour),P(find_bow),P(make_arrow),P(fire_bow),P(collect_drink),P(collect_sapling),P(place_plant),P(eat_plant),P(wake_up),P(eat_cow),P(defeat_zombie),P(defeat_skeleton),P(enter_dungeon),P(open_chest|enter_dungeon),P(eat_snail|enter_dungeon),P(defeat_orc_soldier|enter_dungeon),P(defeat_orc_mage|enter_dungeon),P(enter_gnomish_mines),P(eat_bat|enter_gnomish_mines),P(defeat_gnome_warrior|enter_gnomish_mines),P(defeat_gnome_archer|enter_gnomish_mines),P(collect_ruby),P(collect_sapphire),P(collect_diamond),P(make_diamond_sword),P(make_diamond_pickaxe),P(make_diamond_armour)"
 ```
+
+UMAP for the poster:
+
+```
+python plot_umap.py --dpi=400 --poster --model models/e32_s16.sav,models/a32_s7.sav,models/kb32_rand_s6.sav,models/kb32_s8.sav,models/e32_s18.sav,models/a32_s3.sav,models/kb32_rand_s14.sav,models/kb32_s9.sav --figsize=3 --ncols=4 --name "Compression (good),Autoencoder (good),Shuffled (good),Grounding (good),Compression (bad),Autoencoder (bad),Shuffled (bad),Grounding (bad)"
+```

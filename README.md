@@ -17,16 +17,16 @@
 
 ```
 concept-grounding/
-├─ agents/           # Agent code
-├─ craftax/          # Game code
-├─ logs/             # Training and evaluation logs
-├─ models/           # Agent weights
+├─ agents/   # Agent code
+├─ craftax/  # Game code
+├─ logs/     # Training and eval logs
+├─ models/   # Agent weights
 ├─ paper/
 │  ├─ paper.pdf
 │  └─ poster.pdf
-├─ scripts/          # Instructions in the README
-├─ videos/           # Gameplay recordings
-├─ play.py           # Visualize gameplay
-├─ test.py           # Evaluate an agent
-└─ train.py          # Train an agent
+├─ scripts/  # Open for instructions
+├─ videos/   # Gameplay recordings
+├─ play.py   # Visualize gameplay
+├─ test.py   # Evaluate an agent
+└─ train.py  # Train an agent
 ```

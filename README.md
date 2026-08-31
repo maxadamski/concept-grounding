@@ -16,7 +16,7 @@
 ## Overview
 
 ```
-reasonable-embeddings/
+concept-grounding/
 ├─ agents/           # Agent code
 ├─ craftax/          # Game code
 ├─ logs/             # Training and evaluation logs

@@ -1,5 +1,5 @@
-[[Paper]](blob/main/paper/paper.pdf)
-[[Poster]](blob/main/paper/poster.pdf)
+[[Paper]](paper/paper.pdf)
+[[Poster]](paper/poster.pdf)
 
 ```bibtex
 @inproceedings{adamski2026,

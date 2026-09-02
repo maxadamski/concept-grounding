@@ -1,6 +1,6 @@
 [[Google Scholar]](https://scholar.google.com/citations?user=y_unZyQAAAAJ)
-[[Paper]](paper/paper.pdf)
-[[Poster]](paper/poster.pdf) (tap 3 dots and download if github shows an error)
+[[Paper PDF]](https://openreview.net/pdf?id=10IqdKCR6N)
+[[Poster PDF]](paper/poster.pdf) (tap 3 dots and download if github shows an error)
 
 ```bibtex
 @inproceedings{adamski2026,
